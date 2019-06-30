@@ -1,0 +1,25 @@
+* Reproducible example for internal cabal library haddock failure
+
+To reproduce:
+
+#+BEGIN_SRC bash
+$ ghc Setup.hs -o Setup
+$ ./Setup haddock
+Preprocessing library for repro-0.1.0.0..
+Running Haddock on library for repro-0.1.0.0..
+Haddock coverage:
+  50% (  1 /  2) in 'Lib'
+  Missing documentation for:
+    Module header
+Documentation created: dist/doc/html/repro/index.html
+Preprocessing library 'internal' for repro-0.1.0.0..
+Running Haddock on library 'internal' for repro-0.1.0.0..
+Setup: internal error when calculating transitive package dependencies.
+Debug info: []
+#+END_SRC
+
+Only fails if the non-internal library is a dependency of the internal one.
+
+Versions (~ghc-pkg list~):
+- ghc-8.6.5
+- Cabal-2.4.0.1

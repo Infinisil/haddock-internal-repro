@@ -1,0 +1,15 @@
+cabal-version: 2.4
+name: repro
+version: 0.1.0.0
+
+library
+  default-language: Haskell2010
+  build-depends: base
+  exposed-modules: Lib
+
+
+library internal
+  default-language: Haskell2010
+  build-depends: base
+               , repro
+  exposed-modules: Internal
